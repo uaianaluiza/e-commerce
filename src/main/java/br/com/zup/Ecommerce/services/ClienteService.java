@@ -15,7 +15,7 @@ public class ClienteService {
     private static List<Cliente> clientes = new ArrayList<>();
 
     public Cliente cadastrarCliente(Cliente cliente) {
-        if ( !verificarSeCPFEstaCadastrado(cliente.getCpf()) ) {
+        if ( !verificarSeCPFEstaCadastrado(cliente.getCpf()) || (!verificarSeEmailEstaCadastrado(cliente.getEmail()))){
             clientes.add(cliente);
             return cliente;
         }
@@ -35,11 +35,28 @@ public class ClienteService {
         }
         throw new CadastroNaoEncontradoException("Cliente não cadastrado");
     }
+
+    public Cliente pesquisarClientePeloEmail(String Email) {
+        for (Cliente cliente : clientes) {
+            if ( cliente.getEmail().equals(Email) ) {
+                return cliente;
+            }
+        }
+        throw new CadastroNaoEncontradoException("Cliente não cadastrado");
+    }
     private boolean verificarSeCPFEstaCadastrado(String cpf){
         for (Cliente cliente : clientes) {
             if (cliente.getCpf().equals(cpf)){
                 return true;
             }
         }return false;
+    }
+    private boolean verificarSeEmailEstaCadastrado(String email) {
+        for (Cliente cliente : clientes) {
+            if ( cliente.getEmail().equals(email) ) {
+                return true;
+            }
+        }
+        return false;
     }
 }

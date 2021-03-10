@@ -14,8 +14,6 @@ public class ClienteService {
 
     public Cliente cadastrarCliente(Cliente cliente){
         clientes.add(cliente);
-        cliente = new Cliente();
-
         return cliente;
     }
 

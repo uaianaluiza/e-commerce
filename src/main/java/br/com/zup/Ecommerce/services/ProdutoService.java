@@ -13,7 +13,6 @@ public class ProdutoService {
 
     public Produto cadastrarProduto(Produto produto){
         produtos.add(produto);
-        produto = new Produto();
 
         return produto;
     }

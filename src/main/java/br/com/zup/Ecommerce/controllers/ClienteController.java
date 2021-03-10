@@ -6,13 +6,12 @@ import br.com.zup.Ecommerce.services.ClienteService;
 import br.com.zup.Ecommerce.services.ProdutoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
-
+@RestController
+@RequestMapping("/clientes")
 public class ClienteController {
 
     @Autowired
@@ -20,7 +19,7 @@ public class ClienteController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Cliente cadastrarCliente (@RequestBody Cliente cliente){
+    public Cliente cadastrarCliente (@RequestBody @Valid Cliente cliente){
         Cliente novoCliente = clienteService.cadastrarCliente(cliente);
         return novoCliente;
 

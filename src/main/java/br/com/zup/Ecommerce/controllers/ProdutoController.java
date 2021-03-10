@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/produtos")
 
@@ -19,6 +21,11 @@ public class ProdutoController {
         Produto novoProduto = produtoService.cadastrarProduto(produto);
         return novoProduto;
 
+    }
+    @GetMapping
+    public List<Produto> verProdutos (){
+        List<Produto> todosProdutos = produtoService.getProdutos();
+        return todosProdutos;
     }
 
 }

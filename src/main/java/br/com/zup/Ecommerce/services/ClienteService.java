@@ -1,5 +1,7 @@
 package br.com.zup.Ecommerce.services;
 
+import br.com.zup.Ecommerce.exception.CadastroJaExisteException;
+import br.com.zup.Ecommerce.exception.CadastroNaoEncontradoException;
 import br.com.zup.Ecommerce.models.Cliente;
 import br.com.zup.Ecommerce.models.Produto;
 import org.springframework.stereotype.Service;
@@ -12,12 +14,32 @@ import java.util.List;
 public class ClienteService {
     private static List<Cliente> clientes = new ArrayList<>();
 
-    public Cliente cadastrarCliente(Cliente cliente){
-        clientes.add(cliente);
-        return cliente;
+    public Cliente cadastrarCliente(Cliente cliente) {
+        if ( !verificarSeCPFEstaCadastrado(cliente.getCpf()) ) {
+            clientes.add(cliente);
+            return cliente;
+        }
+        throw new CadastroJaExisteException("CPF já cadastrado");
     }
+
 
     public static List<Cliente> getClientes() {
         return clientes;
+    }
+
+    public Cliente pesquisarClientePeloNome(String NomeDoCliente) {
+        for (Cliente cliente : clientes) {
+            if ( cliente.getNomeDoCliente().equals(NomeDoCliente) ) {
+                return cliente;
+            }
+        }
+        throw new CadastroNaoEncontradoException("Cliente não cadastrado");
+    }
+    private boolean verificarSeCPFEstaCadastrado(String cpf){
+        for (Cliente cliente : clientes) {
+            if (cliente.getCpf().equals(cpf)){
+                return true;
+            }
+        }return false;
     }
 }

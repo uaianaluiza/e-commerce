@@ -13,7 +13,7 @@ public class Cliente {
     @Size(min = 3, message = "Quantidade mínima de caractéres 3")
     private String nomeDoCliente;
     @CPF
-    private String CPF;
+    private String cpf;
     @Email
     private String email;
 
@@ -29,12 +29,12 @@ public class Cliente {
         this.nomeDoCliente = nomeDoCliente;
     }
 
-    public String getCPF() {
-        return CPF;
+    public String getCpf() {
+        return cpf;
     }
 
-    public void setCPF(String CPF) {
-        this.CPF = CPF;
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
     }
 
     public String getEmail() {

@@ -12,21 +12,25 @@ public class ProdutoService {
 
     private static List<Produto> produtos = new ArrayList<>();
 
-    public Produto cadastrarProduto(Produto produto){
-            produtos.add(produto);
-            return produto;
-        }
+    public Produto cadastrarProduto(Produto produto) {
+        if ( produtoJaCadastrado(produto.getNome()) ) ;
+        produtos.add(produto);
+        return produto;
+    }
 
 
     public static List<Produto> getProdutos() {
         return produtos;
     }
 
-    public void produtoJaCadastrado(String nome) throws Exception {
+    private boolean produtoJaCadastrado(String nome) {
         for (Produto produto : produtos) {
             if ( produto.getNome().equals(nome) ) {
-                throw new CadastroJaExisteException ("Produto já cadastrado");
+                throw new CadastroJaExisteException();
             }
         }
+        return false;
     }
 }
+
+

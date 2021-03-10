@@ -1,5 +1,6 @@
 package br.com.zup.Ecommerce.controllers;
 
+import br.com.zup.Ecommerce.exception.CadastroNaoEncontradoException;
 import br.com.zup.Ecommerce.models.Cliente;
 import br.com.zup.Ecommerce.models.Produto;
 import br.com.zup.Ecommerce.services.ClienteService;
@@ -28,5 +29,15 @@ public class ClienteController {
     public List<Cliente> verClientes (){
         List<Cliente> todosClientes = clienteService.getClientes();
         return todosClientes;
+    }
+
+    @GetMapping("{email}/")
+    public Cliente pesquisarClientePeloEmail(@PathVariable String Email){
+        try{
+            Cliente cliente = clienteService.pesquisarClientePeloEmail(Email);
+            return cliente;
+        }catch (RuntimeException erro){
+            throw new CadastroNaoEncontradoException(HttpStatus.BAD_REQUEST, erro.getMessage());
+        }
     }
 }

@@ -1,11 +1,13 @@
 package br.com.zup.Ecommerce.exception;
 
+import org.springframework.http.HttpStatus;
+
 public class CadastroNaoEncontradoException extends RuntimeException {
     private int status = 400;
     private String razao = "Produto não cadastrado";
     private String tipoErro = "Objeto não cadastrado";
 
-    public CadastroNaoEncontradoException() {
+    public CadastroNaoEncontradoException(HttpStatus badRequest, String message) {
 
     }
 

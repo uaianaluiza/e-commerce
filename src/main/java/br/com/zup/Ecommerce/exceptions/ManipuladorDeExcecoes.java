@@ -1,4 +1,4 @@
-package br.com.zup.Ecommerce.exception;
+package br.com.zup.Ecommerce.exceptions;
 
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;

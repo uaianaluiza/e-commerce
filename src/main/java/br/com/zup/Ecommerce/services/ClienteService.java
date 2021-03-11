@@ -1,9 +1,8 @@
 package br.com.zup.Ecommerce.services;
 
-import br.com.zup.Ecommerce.exception.CadastroJaExisteException;
-import br.com.zup.Ecommerce.exception.CadastroNaoEncontradoException;
+import br.com.zup.Ecommerce.exceptions.CadastroJaExisteException;
+import br.com.zup.Ecommerce.exceptions.CadastroNaoEncontradoException;
 import br.com.zup.Ecommerce.models.Cliente;
-import br.com.zup.Ecommerce.models.Produto;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;

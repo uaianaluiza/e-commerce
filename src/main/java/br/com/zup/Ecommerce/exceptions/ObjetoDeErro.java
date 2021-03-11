@@ -1,4 +1,4 @@
-package br.com.zup.Ecommerce.exception;
+package br.com.zup.Ecommerce.exceptions;
 
 public class ObjetoDeErro {
 

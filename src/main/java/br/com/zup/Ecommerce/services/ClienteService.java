@@ -13,6 +13,11 @@ import java.util.List;
 public class ClienteService {
     private static List<Cliente> clientes = new ArrayList<>();
 
+    /**
+     * Método cadastrarCliente verica se CPF e E-mails inseridos ainda não foram cadastrados,
+     * caso não ele adiciona um novo cliente na lista de clientes
+     * */
+
     public Cliente cadastrarCliente(Cliente cliente) {
         if ( !verificarSeCPFEstaCadastrado(cliente.getCpf()) || (!verificarSeEmailEstaCadastrado(cliente.getEmail()))){
             clientes.add(cliente);
@@ -25,7 +30,9 @@ public class ClienteService {
     public static List<Cliente> getClientes() {
         return clientes;
     }
-
+    /**
+     * Método pesquisarClientePeloNome permite a busca de um cliente pelo nome cadastrado
+     * */
     public Cliente pesquisarClientePeloNome(String NomeDoCliente) {
         for (Cliente cliente : clientes) {
             if ( cliente.getNomeDoCliente().equals(NomeDoCliente) ) {
@@ -34,7 +41,9 @@ public class ClienteService {
         }
         throw new CadastroNaoEncontradoException("Cliente não cadastrado");
     }
-
+    /**
+     * Método pesquisarClientePeloEmail permite a busca de um cliente pelo e-mail cadastrado
+     * */
     public Cliente pesquisarClientePeloEmail(String Email) {
         for (Cliente cliente : clientes) {
             if ( cliente.getEmail().equals(Email) ) {
@@ -43,6 +52,10 @@ public class ClienteService {
         }
         throw new CadastroNaoEncontradoException("Cliente não cadastrado");
     }
+    /**
+     * Método verificarSeCPFEstaCadastrado percorre a lista de clientes e verifica
+     * se o CPF informado já foi cadastrado para outro cliente
+     * */
     private boolean verificarSeCPFEstaCadastrado(String cpf){
         for (Cliente cliente : clientes) {
             if (cliente.getCpf().equals(cpf)){
@@ -50,6 +63,10 @@ public class ClienteService {
             }
         }return false;
     }
+    /**
+     * Método verificarSeEmailEstaCadastrado percorre a lista de clientes e verifica
+     * se o e-mail informado já foi cadastrado para outro cliente
+     * */
     private boolean verificarSeEmailEstaCadastrado(String email) {
         for (Cliente cliente : clientes) {
             if ( cliente.getEmail().equals(email) ) {

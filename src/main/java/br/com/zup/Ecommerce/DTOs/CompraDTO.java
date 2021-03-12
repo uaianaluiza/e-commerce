@@ -9,9 +9,9 @@ import java.util.List;
 public class CompraDTO {
     private List<ProdutoDTO> produtosDTO;
     private String cpf;
-    
-    public CompraDTO(){
-        
+
+    public CompraDTO() {
+
     }
 
     public List<ProdutoDTO> getProdutosDTO() {
@@ -30,11 +30,15 @@ public class CompraDTO {
         this.cpf = cpf;
     }
 
-    public Compra converterDTOparaCompra(Cliente cliente,List<Produto> produto) {
+   public Compra converterDTOparaCompra(Cliente cliente, List<Produto> produto) {
         Compra compra = new Compra();
         compra.setProdutoscomprados(produto);
         compra.setCliente(cliente);
 
         return compra;
     }
+
+
 }
+
+

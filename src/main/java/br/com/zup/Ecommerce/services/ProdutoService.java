@@ -11,6 +11,10 @@ import java.util.List;
 public class ProdutoService {
 
     private static List<Produto> produtos = new ArrayList<>();
+    /**
+     * Método cadastrarProduto verica se já existe um produto de mesmo nome,
+     * caso não, ele adiciona um novo produto na lista de produtos
+     * */
 
     public Produto cadastrarProduto(Produto produto) {
         if ( produtoJaCadastrado(produto.getNome()) ) ;
@@ -18,11 +22,15 @@ public class ProdutoService {
         return produto;
     }
 
-
     public static List<Produto> getProdutos() {
         return produtos;
     }
 
+
+    /**
+     * Método produtoJaCadastrado verica se já existe um produto de mesmo nome,
+     * caso aja ele não permite o cadastro.
+     * */
     private boolean produtoJaCadastrado(String nome) {
         for (Produto produto : produtos) {
             if ( produto.getNome().equals(nome) ) {

@@ -12,9 +12,9 @@ public class Cliente {
     @NotNull(message = "Nome não pode ser nulo")
     @Size(min = 3, message = "Quantidade mínima de caractéres 3")
     private String nomeDoCliente;
-    @CPF
+    @CPF(message = "CPF inválido")
     private String cpf;
-    @Email
+    @Email(message = "E-mail inválido")
     private String email;
 
     public Cliente(){
